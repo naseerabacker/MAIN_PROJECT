@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+{% include "ind.html" %}
+
+{% block body %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+    {% csrf_token %}
+
+<body>
+{#<form action="signup_post" method="post"><table width="200" border="1">#}
+
+<div class="col-lg-12 grid-margin stretch-card">
+        <div class="card-body">
+            <form class="forms-sample" id="form1" action="" method="post">
+
+            <table class="table table-borderless table-hover" width="500" border="0.1">
+  <tr>
+    <td>name</td>
+    <td><input type="text" name="textfield" id="textfield1" /></td>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td><input type="text" name="textfield" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input type="text" name="textfield" id="textfield3" /></td>
+  </tr>
+
+  <tr>
+    <td>Phone</td>
+    <td><input type="text" name="textfield" id="textfield4" /></td>
+  </tr>
+    <tr>
+    <td>Confirm password</td>
+    <td><input type="text" name="textfield" id="textfield6" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><div align="center">
+      <input type="submit" name="button" id="button" value="SignUp" />
+    </div></td>
+    </tr>
+</table>
+              </div>
+</form>
+        </div>
+</div></div>
+
+
+</body>
+</html>{% endblock %}
+

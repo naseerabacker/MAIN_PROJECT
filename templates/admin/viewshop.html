@@ -1,0 +1,92 @@
+{% extends "ADMIND.html" %}
+{% block body %}
+
+<body>
+        {% csrf_token %}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card" >
+        <div class="card-body">
+            <h4 class="card-title" >SHOPS</h4>
+
+
+
+            <div class="table-responsive" >
+
+{##}
+{#            <table class="table table-borderless table-hover" width="200" border="0.1">#}
+{##}
+{#  <tr>#}
+{#      <td>S.no</td>#}
+{#    <td>Logo</td>#}
+{#    <td>ShopName</td>#}
+{#    <td>&nbsp;Floor</td>#}
+{#      <td>&nbsp;shopnumber</td>#}
+{#      <td>&nbsp;email</td>#}
+{#      <td>&nbsp;phonenumber</td>#}
+{#       <td>Category</td>#}
+{#       <td>&nbsp;</td>#}
+{#    <td>&nbsp;</td>    <td>&nbsp;</td>#}
+{##}
+{#  </tr>#}
+{#          {% for i in data %}#}
+{#          <tr>#}
+{##}
+{#          <td>&nbsp;{{ forloop.counter }}</td>#}
+{#          <td>&nbsp;<img src="{{ i.logo }}" height="100px" width="100px"></td>#}
+{#          <td>{{ i.shopname }}</td>#}
+{#          <td>{{ i.FLOOR.floorno }}</td>#}
+{#          <td>{{ i.shopnumber }}</td>#}
+{#          <td>{{ i.email }}</td>#}
+{#          <td>{{ i.phonenumber }}</td>#}
+{#              <td>{{ i.Category }}</td>#}
+{#              <td><a href="{% url 'send_notifi' %}">send_notification</a></td>#}
+{##}
+{#          <td><a href="/myapp/admin_edit_shops/{{ i.id }}#about">EDIT</a></td>#}
+{##}
+{#     <td><a href="{% url 'admin_delete_shop' id=i.id %}">DELETE</a></td>#}
+{#  </tr>#}
+{#          {% endfor %}#}
+{##}
+{#            </table>#}
+
+
+
+<div class="row">
+    {% for i in data%}
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <!--<i class="fa fa-2x fa-route mx-auto mb-4"></i>-->
+                            &nbsp;<img src="{{ i.logo }}" height="200px" width="300px">
+
+                        <h5 class="mb-2">{{ i.shopname }}</h5>
+                      <h5><p class="m-0">{{ i.FLOOR.floorno }}</p>
+                       <p class="m-0">{{ i.shopnumber }}</p>
+                    <p class="m-0">{{ i.email }}</p>
+                       <p class="m-0">{{ i.phonenumber }}</p>
+                       <p class="m-0">{{ i.Category }}</p>
+
+</h5>
+                        <tr><td><p><a href="/myapp/admin_edit_shops/{{ i.id }}#about">EDIT</a></p></td></tr>
+                        <tr><td><p><a href="{% url 'admin_delete_shop' id=i.id %}">DELETE</a></p></td></tr>
+                        <tr><td><p><a href="">VIEW ROUTE</a></p></td></tr>
+                        <tr><td><p><a href="/myapp/send_notifi/{{ i.id }}#about">Send Message</a></p></td></tr>
+
+                    </div>
+                </div>
+
+
+                    {%endfor%}
+
+                    </div>
+                </div>
+              </div>
+</form>
+        </div>
+</div></div>
+</body>
+{% endblock %}
+</HTML>

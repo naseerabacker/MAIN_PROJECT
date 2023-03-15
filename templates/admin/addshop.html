@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+{% extends "ADMIND.html" %}
+{% block body %}
+<body>
+<form action="/myapp/admin_add_shop_post/" method="post" enctype="multipart/form-data" name="form1" id="form1" >
+    {% csrf_token %}
+            <table class="table table-borderless table-hover" width="200" border="0.1">
+    <tr>
+      <td><pre>Shopname</pre></td>
+      <td><input type="text" name="textfield" id="textfield" required/></td>
+    </tr>
+    <tr>
+      <td><pre>Shopnumber</pre></td>
+      <td><input type="text" name="textfield2" id="textfield2" required /></td>
+    </tr>
+    <tr>
+      <td><pre>Email</pre></td>
+      <td><input type="text" name="textfield3" id="textfield3" required/></td>
+    </tr>
+    <tr>
+      <td><pre>Logo</pre></td>
+      <td><input type="file" name="fileField" id="fileField" required/></td>
+    </tr>
+    <tr>
+      <td><pre>Phonenumber</pre></td>
+      <td><input type="text" name="textfield5" id="textfield5" required/></td>
+    </tr>
+    <tr>
+      <td><pre>Floor</pre></td>
+      <td><select name="textfield6"  CLASS="form-control"  id="textfield6" required>
+          {% for i in data %}
+          <option value="{{ i.id }}">{{ i.floorno }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+       <tr>
+      <td><pre>Category</pre></td>
+      <td><input type="text" name="textfield7" id="textfield7" required/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="ADD SHOP" id="ADD SHOP" value="ADD SHOP" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+{##}
+{#<script>#}
+{##}
+{#function validateForm()#}
+{#{#}
+{##}
+{#var textfield = document.form.textfield.value;#}
+{#var textfield2 = document.form.textfield2.value;#}
+{#var textfield3=document.form.textfield3.value;#}
+{#var filefield=document.form.filefield.value;#}
+{#var textfield5 = document.form.textfield5.value;#}
+{#var textfield6 = document.form.textfield6.value;#}
+{#if (textfield == "")#}
+{#{#}
+{#alert("Enter Name !!");#}
+{##}
+{#document.form.Name.focus();#}
+{#return false;#}
+{##}
+
+{##}
+{#if (textfield2 == "")#}
+{##}
+{#{#}
+{##}
+{#alert("Enter Email ID");#}
+{##}
+{#document.form.mail.focus();#}
+{#return false;#}
+
+{##}
+{##}
+{#if (textfield3 == "")#}
+{#{#}
+{##}
+{#alert("Enter Mobile number");#}
+{#document.form.mob.focus();#}
+{#return false;#}
+
+{##}
+{##}
+{##}
+{#if (filefield == "")#}
+{#{#}
+{#alert("Enter User Name !!");#}
+{#document.form.user.focus();#}
+{#return false;#}
+
+{##}
+{#if (textfield5 == "")#}
+{#{alert("Enter the Password !!");#}
+{#document.form.passcode.focus();#}
+{#return false;#}
+{##}
+{##}
+{##}
+{#if (textfield6 == "")#}
+{##}
+{#{#}
+{##}
+{#alert("Confirm the Password !!");#}
+{##}
+{#document.form.cpasscode.focus();#}
+{##}
+{#return false;#}
+
+{#</script>#}
+</body>
+{#</html>#}
+{% endblock %}

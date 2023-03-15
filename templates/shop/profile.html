@@ -1,0 +1,53 @@
+            {% extends "shopindex.html" %}
+            {% block body %}
+
+            <body>
+            {% csrf_token %}
+
+
+            <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card" >
+            <div class="card-body">
+            <h4 class="card-title" >VIEW PROFILE</h4>
+            <form class="forms-sample" id="form1" action="/myapp/shop_profile/" method="POST">
+
+            <div class="table-responsive" >
+
+            <table class="table table-borderless table-hover" width="200" border="0.1">
+
+            <tr>
+{#                  <td>S.no</td>#}
+            <td>Logo</td>
+            <td>ShopName</td>
+            <td>Floor</td>
+            <td>Shopnumber</td>
+            <td>Email</td>
+            <td>Phonenumber</td>
+            <td>Category</td>
+{#                   <td>&nbsp;</td>#}
+{#                <td>&nbsp;</td>#}
+            </tr>
+{#                      {% for i in data %}#}
+{#            <td>{{ forloop.counter }}</td>#}
+            <td><img src="{{ data.logo }}" height="100px" width="100px"></td>
+            <td>{{ data.shopname }}</td>
+            <td>{{ data.FLOOR_id }}</td>
+            <td>{{ data.shopnumber }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.phonenumber }}</td>
+            <td>{{ data.Category }}</td>
+                                        <tr><td><p><a href="/myapp/edit_profile/{{ data.id }}">EDIT</a></p></td></tr>
+
+{#                <td><p><a href="/myapp/edit_profile/{{ data.did }}#about">EDIT</a></p></td>#}
+{#                        <tr><td><p><a href="{% url 'admin_delete_shop' id=i.id %}">DELETE</a></p></td></tr>#}
+            </tr>
+{#                      {% endfor %}#}
+
+            </table>
+            </div>
+            </form>
+            </div>
+            </div></div>
+            </body>
+            {% endblock %}
+{#            </HTML>#}

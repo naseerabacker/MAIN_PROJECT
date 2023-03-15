@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% include "ADMIND.html" %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+</script>
+</head>
+
+<body>
+
+
+
+
+<form action="" method="get">
+
+<table width="200" border="1">
+  <tr>
+    <td>Shop</td>
+    <td><select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
+      <option>item1</option>
+      <option>item2</option>
+      <option>item3</option>
+      <option>item4</option>
+      <option>item5</option>
+      <option>item6</option>
+      <option>item7</option>
+      <option>item8</option>
+      <option>item9</option>
+      <option>item10</option>
+      <option>item11</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td>HotspotAddress</td>
+    <td><input type="text" name="textfield" id="textfield" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><div align="center">
+      <input type="submit" name="button" id="button" value="Submit" />
+    </div></td>
+    </tr>
+</table>
+
+
+</form>
+</body>
+</html>

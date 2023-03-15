@@ -1,0 +1,63 @@
+{% extends "ind.html" %}
+{% block body %}
+
+<body>
+
+{% csrf_token %}
+
+{% if results %}
+    <ul>
+    {% for shopname in results %}
+                <h2>{{ shop.shopname }}</h2>
+
+{#        <li><a href="{% url 'shop_detail' shop.pk %}">{{ shop.shopname }}</a></li>#}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No shops found.</p>
+{% endif %}
+
+{##}
+{#{% for shop in shops %}#}
+{#    <div class="card">#}
+{#        <h2>{{ shop.shopname }}</h2>#}
+{#        <p>{{ shop.Category }}</p>#}
+{#    </div>#}
+{#{% empty %}#}
+{#    <p>No cards found.</p>#}
+{#{% endfor %}#}
+
+{##}
+{#<div class="col-lg-12 grid-margin stretch-card">#}
+{#        <div class="card-body">#}
+{#<div class="row">#}
+{#    {% for i in data%}#}
+{##}
+{#                <div class="col-lg-4 col-md-6 mb-4" height="200px" width="200px">#}
+{##}
+{#                    <div class="service-item bg-white text-center mb-2 py-5 px-4" height="200px" width="200px">#}
+{#                        <!--<i class="fa fa-2x fa-route mx-auto mb-4"></i>-->#}
+{#                         <img src="{{ i.logo }}" height="200px" width="200px" >#}
+{##}
+{#                        <a href="/myapp/view_shop_detail/{{ i.id }}"> <h5 class="mb-2">{{ i.shopname }}</h5></a>#}
+{#                       <p class="m-0">{{ i.FLOOR.floorno }}</p>#}
+{#                       <p class="m-0">{{ i.shopnumber }}</p>#}
+{#                       <p class="m-0">{{ i.email }}</p>#}
+{#                       <p class="m-0">{{ i.phonenumber }}</p>#}
+{#                       <p class="m-0">{{ i.Category }}</p>#}
+{##}
+{#      <td><a href="">VIEW ROUTE</a></td>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#    {%endfor%}#}
+
+{#</div></div></div>#}
+
+
+
+</form>
+
+</body>
+{% endblock %}
+</HTML>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+{% extends "shopindex.html" %}
+{% block body %}
+<body>
+<form action="/myapp/edit_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+            <table class="table table-borderless table-hover" width="200" border="0.1">
+    <tr>
+      <td><pre>shopname</pre></td>
+      <td><input type="hidden" name="h1" id="textfield" value="{{ data.id }}" />
+    <input type="text" name="textfield" id="textfield" value="{{ data.shopname }}" /></td>
+    </tr>
+{#    <tr>#}
+{#      <td><pre>shopnumber</pre></td>#}
+{#      <td><input type="text" name="textfield2" id="textfield2" value="{{ data.shopnumber}}"/></td>#}
+{#    </tr>#}
+    <tr>
+      <td><pre>email</pre></td>
+      <td><input type="text" name="textfield3" id="textfield3" value="{{ data.email}}" /></td>
+    </tr>
+    <tr>
+      <td><pre>logo</pre></td>
+      <td><input type="file" name="fileField" id="fileField" value="{{ data.logo}}"/></td>
+    </tr>
+    <tr>
+      <td><pre>phonenumber</pre></td>
+      <td><input type="text" name="textfield5" id="textfield5" value="{{ data.phonenumber}}" /></td>
+    </tr>
+    <tr>
+      <td><pre>FLOOR</pre></td>
+      <td><select NAME="textfield6"  CLASS="form-control">
+          {% for i in data2 %}
+          <option value="{{ i.id }}">{{ i.floorno }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+       <tr>
+      <td><pre>Category</pre></td>
+      <td><input type="text" name="textfield7" id="textfield7" value="{{ data.Category}}" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="ADD SHOP" id="ADD SHOP" value="ADD SHOP" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}
