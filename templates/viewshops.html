@@ -1,15 +1,8 @@
 
-
-
 {% extends "indd.html" %}
 {% block body %}
 
 <body>
-
-
-
-{#    {% csrf_token %}#}
-
 
 <form method="POST" action="{% url 'view_shops' %}">
 {% csrf_token %}
@@ -27,15 +20,15 @@
 <div class="col-lg-4 col-md-6 mb-4" height="200px" width="200px">
 
     <div class="service-item bg-white text-center mb-2 py-5 px-4" height="200px" width="200px">
-    <a href="/myapp/view_shop_detail/"><img src="{{ i.logo }}" height="200px" width="200px" ></a>
-<h5 class="mb-2">{{ i.shopname }}</h5>
-       <p class="m-0">{{ i.FLOOR.floorno }}</p>
+    <a href="/myapp/view_shop_detail/{{ i.id }}#about"><img src="{{ i.logo }}" height="200px" width="200px" ></a>
+{#<h5 class="mb-2">{{ i.shopname }}</h5>#}
+{#       <p class="m-0">{{ data.FLOOR.floorno }}</p>#}
 {#                       <p class="m-0">{{ i.shopnumber }}</p>#}
-       <p class="m-0">{{ i.email }}</p>
-       <p class="m-0">{{ i.phonenumber }}</p>
-       <p class="m-0">{{ i.Category }}</p>
-
-<td><a href="">VIEW ROUTE</a></td>
+{#       <p class="m-0">{{ i.email }}</p>#}
+{#       <p class="m-0">{{ i.phonenumber }}</p>#}
+{#       <p class="m-0">{{ i.Category }}</p>#}
+{##}
+{#<td><a href="">VIEW ROUTE</a></td>#}
 
     </div>
 </div>

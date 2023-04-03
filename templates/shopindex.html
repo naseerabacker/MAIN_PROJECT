@@ -76,7 +76,7 @@
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
-{#                    <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>#}
+                    <h1 class="m-0 text-primary"><span class="text-dark">HILITE</span></h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -97,10 +97,11 @@
 {#                                <a href="guide.html" class="dropdown-item">Travel Guides</a>#}
 {#                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>#}
 {#                             </div>#}
-    </div>                        <a href="/myapp/view_shop/" class="nav-item nav-link">VIEW SHOPS</a>
+    </div>                        <a href="/myapp/view_shop/#tab" class="nav-item nav-link">VIEW SHOPS</a>
 {#    <a href="/myapp/cus_send_feedbk/" class="nav-item nav-link">FEEDBACK</a>#}
-    <a href="/myapp/shop_profile/" class="nav-item nav-link">PROFILE</a>
-                            <a href="/myapp/view_notifi/" class="nav-item nav-link">MESSAGE</a>
+    <a href="/myapp/shop_profile/#tab" class="nav-item nav-link">PROFILE</a>
+                            <a href="/myapp/view_notifi/#tab" class="nav-item nav-link">Notification</a>
+                        <a href="/myapp/mainpage/" class="nav-item nav-link">LOGOUT</a>
 
 {#                        <div class="nav-item dropdown">#}
 {#                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>#}
@@ -132,6 +133,7 @@
 {#                {% block body %}#}
 {#                {% endblock %}#}
                     <img class="w-100" src="{% static 'asse/img/wall.jpg' %}" alt="Image">
+<div  id="tab"></div>
 
                   {% block body %}
                 {% endblock %}

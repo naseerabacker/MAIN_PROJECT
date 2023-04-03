@@ -79,6 +79,12 @@ def admin_add_shop_post(request):
     sobj.LOGIN=lobj
     sobj.save()
 
+    hobj=hotspot()
+    hotspotaddress=request.POST['textfield8']
+    hobj.hotspotaddress=hotspotaddress
+    hobj.SHOP=sobj
+    hobj.save()
+
     return redirect('/myapp/admin_view_shops')
 
     # return HttpResponse("ok")
@@ -133,11 +139,25 @@ def admin_view_floor(request):
     res=floor.objects.all()
     return render(request,"admin/viewfloor.html",{'data':res})
 
+
+
 def view_floor(request):
     res=floor.objects.all()
     res2=shop.objects.all()
 
     return render(request,"viewfloor.html",{'data':res,'data2':res2})
+
+
+# def floor_shop(request,id):
+#     print(id)
+#     res=shop.objects.filter(FLOOR=id)
+#     return render(request,"shopfil.html",{'data':res})
+#
+#
+#
+# def view_floor(request,id):
+#     res=shop.objects.filter(FLOOR=id)
+#     return render(request,"viewfloor.html",{'data':res})
 
 def admin_view_feedback(request):
     return render(request,"admin/feedback.html")
@@ -241,17 +261,6 @@ def change_pass_post(request):
 
 
 
-#
-# def admin_add_floor_post(request):
-#     Floornumber=request.POST['textfield']
-#
-#     fobj=floor()
-#     fobj.floorno=Floornumber
-#     fobj.save()
-#
-#
-#     return HttpResponse("ok")
-
 
 
 def signup(request):
@@ -326,19 +335,30 @@ def admin_delete_shop(request,id):
     # return redirect('/myapp/admin_view_shops')
     return HttpResponse('''<script> alert("DELETE");window.location='/myapp/admin_view_shops'</script>)''')
 
+#
+# def admin_edit_shops(request,did):
+#     res=shop.objects.get(id=did)
+#     res2=floor.objects.all()
+#     res3=hotspot.objects.get(SHOP=shop.objects.get(LOGIN=did))
+#     print(res3.id)
+#     request.session['sid']=did
+#
+#     return render(request,"editshop.html",{'data':res,'data2':res2,'data3':res3})
+
 
 def admin_edit_shops(request,did):
     res=shop.objects.get(id=did)
     res2=floor.objects.all()
     print(res)
+    res3 = hotspot.objects.get(SHOP=did)
+    print(res3.id)
     request.session['sid']=did
 
-    return render(request,"editshop.html",{'data':res,'data2':res2})
+    return render(request,"editshop.html",{'data':res,'data2':res2,'data3':res3})
 
 def admin_edit_shops_post(request):
     print('hi')
     did=request.POST['h1']
-    Logo = request.FILES['fileField']
     shopname = request.POST['textfield']
     floor = request.POST['textfield6']
     Category = request.POST['textfield7']
@@ -346,64 +366,49 @@ def admin_edit_shops_post(request):
     email = request.POST['textfield3']
     phonenumber = request.POST['textfield5']
     sobj = shop.objects.get(id=request.session['sid'])
+    hotspotaddress = request.POST['textfield8']
 
     if 'fileField' in request.FILES:
-        Logo = request.FILES['fileField']
-        if Logo.name != "":
+        logo = request.FILES['fileField']
+        if logo.name != "":
             from datetime import datetime
             date = datetime.now().strftime("%Y%m%d%H%M%S") + ".jpg"
             fs = FileSystemStorage()
-            fn = fs.save(date, Logo)
+            fn = fs.save(date, logo)
             path = fs.url(date)
-            # print(path,'==============================')
-    sobj.shopname = shopname
-    sobj.floor = floor
-    sobj.shopnumber = shopnumber
-    sobj.Category = Category
-    sobj.email = email
-    sobj.phonenumber = phonenumber
+            shop.objects.filter(id=did).update(shopname=shopname,shopnumber=shopnumber,Category=Category,email=email,phonenumber=phonenumber,logo=path)
 
-    sobj.logo = path
-    sobj.save()
+            hotspot.objects.filter(SHOP=did).update(hotspotaddress=hotspotaddress)
+        else:
+            shop.objects.filter(id=did).update(shopname=shopname, shopnumber=shopnumber, Category=Category, email=email,phonenumber=phonenumber)
 
+            hotspot.objects.filter(SHOP=did).update(hotspotaddress=hotspotaddress)
+
+
+    else:
+
+        shop.objects.filter(id=did).update(shopname=shopname, shopnumber=shopnumber, Category=Category, email=email, phonenumber=phonenumber)
+
+        hotspot.objects.filter(SHOP=did).update(hotspotaddress=hotspotaddress)
 
     return redirect('/myapp/admin_view_shops')
 
 
-def view_shop_detail(request,id):
 
-    return render(request,"shopdetail.html")
+def view_shop_detail(request,did):
+    res=shop.objects.get(id=did)
+    # res2=hotspot.objects.get(id=did)
+    return render(request,"shopdetail.html",{'data':res})
 
-
-def send_notifi(request,did):
-    res=notification.objects.all()
-
-    return render(request,"admin/sendnotifi.html")
+    # return render(request,"shopdetail.html",{'data':res,'data2':res2})
 
 
-def send_notifi_post(request):
-    did = request.POST['h1']
 
-    noti = request.POST['textfield']
+def view_shop_detail_admin(request,did):
+    res=shop.objects.get(id=did)
+    res2=hotspot.objects.get(SHOP=did)
+    return render(request,"admin/adminshopdetail.html",{'data':res,'data2':res2})
 
-    # time = request.POST['textfield1']
-    # status = request.POST['textfield3']
-    # date = request.POST['textfield2']
-    nobj =notification()
-    nobj.notification =noti
-    # nobj.date = date
-    # nobj.time = time
-    # nobj.status = status
-
-    nobj.save()
-    # return HttpResponse("ok")
-    return redirect('/myapp/admin_view_shops')
-
-def view_notifi(request):
-    res=notification.objects.all()
-    return render(request, "viewnotifi.html", {'data':res})
-
-#
 def edit_profile(request,did):
     lid=request.session['lid']
     request.session['shopid']=did
@@ -483,69 +488,121 @@ def view_shops(request):
         #          return HttpResponse('''<script> alert("no shops");window.location='/myapp/view_shops'</script>)''')
         return render(request, "viewshops.html", {'data': res})
 
+def send_notifi(request):
+            res = notification.objects.all()
+            return render(request, "admin/sendnotifi.html")
+
+def send_notifi_post(request):
+            did = request.POST['h1']
+            noti = request.POST['textfield']
+
+            nobj = notification()
+            nobj.notification = noti
 
 
-        # return HttpResponse("ok")
+            nobj.save()
+            return redirect('/myapp/admin_view_shops')
+
+def view_notifi(request):
+
+    res = notification.objects.filter(shop_id=id)
+    return render(request, "viewnotifi.html", {'data': res})
+
+
+
+# +++++++++++++++++++++
 #-------------------------------------------------------------------
 
 #    android
 
-
-def android_login_post(request):
-    # res=login.objects.all()
-    username = request.POST['username']
-    password = request.POST['password']
-    lid=request.POST['lid']
-
-    if login.objects.filter(name=username, password=password).exists():
-        ob = login.objects.get(name=username, password=password)
-        print(ob)
-        if ob.type == 'customer':
-            return JsonResponse({'status':'ok', 'lid':lid, 'type':type})
-        else:
-            return JsonResponse({'status': 'no'})
-    else:
-        return JsonResponse({'status': 'no'})
-
-
-def android_signup_post(request):
-    firstname = request.POST['firstname']
-    lastname = request.POST['lastname']
-    phonenumber = request.POST['phonenumber']
-
-    email = request.POST['email']
-    password = request.POST['password']
-    confirmpassword = request.POST['confirmpassword']
-
-    lobj = login()
-    lobj.name = email
-    lobj.password = password
-
-    lobj.type = 'user'
-    lobj.save()
-    uobj = user()
-    uobj.firstname = firstname
-    uobj.lastname = lastname
-    uobj.email = email
-    uobj.phonenumber = lastname
-    uobj.LOGIN = lobj
-    uobj.save()
-    return JsonResponse({'status': 'ok'})
-
+#
+# def android_login_post(request):
+#     # res=login.objects.all()
+#     username = request.POST['username']
+#     password = request.POST['password']
+#     lid=request.POST['lid']
+#
+#     if login.objects.filter(name=username, password=password).exists():
+#         ob = login.objects.get(name=username, password=password)
+#         print(ob)
+#         if ob.type == 'customer':
+#             return JsonResponse({'status':'ok', 'lid':lid, 'type':type})
+#         else:
+#             return JsonResponse({'status': 'no'})
+#     else:
+#         return JsonResponse({'status': 'no'})
+#
+#
+# def android_signup_post(request):
+#     firstname = request.POST['firstname']
+#     lastname = request.POST['lastname']
+#     phonenumber = request.POST['phonenumber']
+#
+#     email = request.POST['email']
+#     password = request.POST['password']
+#     confirmpassword = request.POST['confirmpassword']
+#
+#     lobj = login()
+#     lobj.name = email
+#     lobj.password = password
+#
+#     lobj.type = 'user'
+#     lobj.save()
+#     uobj = user()
+#     uobj.firstname = firstname
+#     uobj.lastname = lastname
+#     uobj.email = email
+#     uobj.phonenumber = lastname
+#     uobj.LOGIN = lobj
+#     uobj.save()
+#     return JsonResponse({'status': 'ok'})
+#
+#
 
 
 def cus_view_shop(request):
-    sh=shop.objects.get()
-    print(sh)
-    data=list(sh.values())
-    return JsonResponse({'status': 'ok','shopname':sh.shopname,})
-#
-# def cus_view_shop(request):
-#     shops = shop.objects.all().values('shopname', 'type', 'Category', 'email', 'logo', 'phonenumber', 'FLOOR')
-#     return JsonResponse({'status': 'ok', 'data': list(shops)})
+    l=[]
+    sh=shop.objects.all()
+    for i in sh:
+        l.append({'id':i.id,'shopname':i.shopname,'shopnumber':i.shopnumber,'Category':i.Category,'email':i.email,'phonenumber':i.phonenumber,'FLOOR':i.FLOOR.floorno,"logo":i.logo})
+    print(l)
+    return JsonResponse({'status': 'ok','data': l })
 
-#
-# def  andview_shop(request):
-#     # lid = request.POST['lid']
-#     coj=shop.objects.all
-#     return JsonResponse({'status':'ok','shopname':coj.shopname,'Category':coj.Category,'email':coj.email,'phonenumber':coj.phonenumber,'FLOOR':coj.FLOOR                         })
+
+def cus_view_shop_post(request):
+    shopnames=request.POST['shop']
+    l=[]
+    sh=shop.objects.filter(shopname=shopnames)
+    for i in sh:
+        l.append({'id':i.id,'shopname':i.shopname,'shopnumber':i.shopnumber,'Category':i.Category,'email':i.email,'phonenumber':i.phonenumber,'FLOOR':i.FLOOR.floorno,"logo":i.logo})
+    print(l)
+    return JsonResponse({'status': 'ok','data': l })
+
+
+def cus_view_shop_floor(request):
+    floorid=request.POST['floorid']
+    l=[]
+    sh=shop.objects.filter(FLOOR_id=floorid)
+    for i in sh:
+        l.append({'id':i.id,'shopname':i.shopname,'shopnumber':i.shopnumber,'Category':i.Category,'email':i.email,'phonenumber':i.phonenumber,'FLOOR':i.FLOOR.floorno,"logo":i.logo})
+    print(l)
+    return JsonResponse({'status': 'ok','data': l })
+
+
+
+
+
+
+
+def cus_view_floor(request):
+        l = []
+        sh = floor.objects.all()
+        for i in sh:
+            l.append({'id': i.id, 'floorno': i.floorno})
+        return JsonResponse({'status': 'ok', 'data': l})
+
+def shop_view(request):
+    shopid=request.POST['shopid']
+    print(shopid)
+    sh=shop.objects.get(id=shopid)
+    return JsonResponse({'status':'ok','sid':sh.id,'shopname':sh.shopname,'shopnumber':sh.shopnumber,'email':sh.email,'phonenumber':sh.phonenumber,'floor':sh.FLOOR.floorno,'category':sh.Category})

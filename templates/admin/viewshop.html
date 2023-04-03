@@ -8,7 +8,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card" >
         <div class="card-body">
-            <h4 class="card-title" >SHOPS</h4>
+{#            <h4 class="card-title" >SHOPS</h4>#}
 
 
 
@@ -16,7 +16,8 @@
 
 {##}
 {#            <table class="table table-borderless table-hover" width="200" border="0.1">#}
-{##}
+{##}{#      <td>&nbsp;shopnumber</td>#}
+
 {#  <tr>#}
 {#      <td>S.no</td>#}
 {#    <td>Logo</td>#}
@@ -60,20 +61,21 @@
 
                     <div class="service-item bg-white text-center mb-2 py-5 px-4">
                         <!--<i class="fa fa-2x fa-route mx-auto mb-4"></i>-->
-                            &nbsp;<img src="{{ i.logo }}" height="200px" width="300px">
+{#                            &nbsp;<img src="{{ i.logo }}" height="200px" width="300px">#}
+    <a href="/myapp/view_shop_detail_admin/{{ i.id }}#about"><img src="{{ i.logo }}" height="200px" width="200px" ></a>
 
-                        <h5 class="mb-2">{{ i.shopname }}</h5>
-                      <h5><p class="m-0">{{ i.FLOOR.floorno }}</p>
-                       <p class="m-0">{{ i.shopnumber }}</p>
-                    <p class="m-0">{{ i.email }}</p>
-                       <p class="m-0">{{ i.phonenumber }}</p>
-                       <p class="m-0">{{ i.Category }}</p>
-
-</h5>
-                        <tr><td><p><a href="/myapp/admin_edit_shops/{{ i.id }}#about">EDIT</a></p></td></tr>
-                        <tr><td><p><a href="{% url 'admin_delete_shop' id=i.id %}">DELETE</a></p></td></tr>
-                        <tr><td><p><a href="">VIEW ROUTE</a></p></td></tr>
-                        <tr><td><p><a href="/myapp/send_notifi/{{ i.id }}#about">Send Message</a></p></td></tr>
+{#                        <h5 class="mb-2">{{ i.shopname }}</h5>#}
+{#                      <h5><p class="m-0">{{ i.FLOOR.floorno }}</p>#}
+{#                       <p class="m-0">{{ i.shopnumber }}</p>#}
+{#                    <p class="m-0">{{ i.email }}</p>#}
+{#                       <p class="m-0">{{ i.phonenumber }}</p>#}
+{#                       <p class="m-0">{{ i.Category }}</p>#}
+{##}
+{#</h5>#}
+{#                        <tr><td><p><a href="/myapp/admin_edit_shops/{{ i.id }}#about">EDIT</a></p></td></tr>#}
+{#                        <tr><td><p><a href="{% url 'admin_delete_shop' id=i.id %}">DELETE</a></p></td></tr>#}
+{#                        <tr><td><p><a href="">VIEW ROUTE</a></p></td></tr>#}
+{#                        <tr><td><p><a href="/myapp/send_notifi/{{ i.id }}#about">Send Message</a></p></td></tr>#}
 
                     </div>
                 </div>

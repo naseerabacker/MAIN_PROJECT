@@ -49,11 +49,6 @@ urlpatterns = [
     path('view_floor/', views.view_floor),
 
 
-    path('send_notifi/<int:did>',views.send_notifi,name='send_notifi'),
-    path('send_notifi_post/',views.send_notifi_post,name='send_notifi_post'),
-
-    path('view_notifi/', views.view_notifi, name='view_notifi'),
-
     path('admin_view_feedback/', views.admin_view_feedback),
     path('view_feedback/', views.view_feedback),
 
@@ -62,7 +57,6 @@ urlpatterns = [
 
     path('cus_send_feedbk/', views.cus_send_feedbk),
     path('cus_send_feedbk_post/', views.cus_send_feedbk_post),
-
 
     path('change_pass/', views.change_pass),
     path('change_pass_post/', views.change_pass_post),
@@ -87,7 +81,8 @@ urlpatterns = [
     # path('view_category/', views.view_category),
     path('admin_delete_shop/<int:id>', views.admin_delete_shop, name='admin_delete_shop'),
 
-    path('view_shop_detail/', views.view_shop_detail,name='view_shop_detail'),
+    path('view_shop_detail/<str:did>', views.view_shop_detail,name='view_shop_detail'),
+    path('view_shop_detail_admin/<str:did>', views.view_shop_detail_admin, name='view_shop_detail_admin'),
 
     path('admin_view_shops/',views.admin_view_shops),
 
@@ -97,9 +92,26 @@ urlpatterns = [
     path('add_product/', views.add_product),
     path('add_product_post/', views.add_product_post),
 
-    path('android_login_post/', views.android_login_post),
 
     path('edit_profile/<int:did>', views.edit_profile,name='edit_profile'),
     path('edit_profile_post/', views.edit_profile_post),
+
+    path('send_notifi/', views.send_notifi),
+    path('send_notifi_post/', views.send_notifi_post),
+
+    path('view_notifi/', views.view_notifi, name='view_notifi'),
+
+    # =============
+# ANDROID
+#     =============
+
+    # path('android_login_post/', views.android_login_post),
+
+    path("cus_view_shop/", views.cus_view_shop),
+    path("cus_view_shop_post/", views.cus_view_shop_post),
+    path("cus_view_shop_floor/", views.cus_view_shop_floor),
+    path("cus_view_floor/", views.cus_view_floor),
+
+    path("shop_view/", views.shop_view),
 
 ]

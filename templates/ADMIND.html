@@ -7,7 +7,8 @@
 {#    <div class="container d-flex justify-content-between align-items-center">#}
 {##}
 {#      <div class="logo">#}
-        <h1 class="text-light"><a href="index.html"><span>HiLite</span></a></h1>
+{#                    <h1 class="m-0 text-primary"><span class="text-dark">HILITE</span></h1>#}
+
 {#        <!-- Uncomment below if you prefer to use an image logo -->#}
 {# <a href="index.html"><img src="assets/img/logo.jpg" alt="" class="img-fluid"></a>#}
 {#      </div>#}
@@ -100,6 +101,8 @@
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
+                                        <h1 class="m-0 text-primary"><span class="text-dark">HILITE</span></h1>
+
 {#                    <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>#}
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -118,24 +121,22 @@
     <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FLOOR</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="/myapp/admin_view_floor/" class="dropdown-item">VIEW FLOORS</a>
-                                <a href="/myapp/admin_add_floor/" class="dropdown-item">ADD FLOOR</a>
+                                <a href="/myapp/admin_view_floor/#tab" class="dropdown-item">VIEW FLOORS</a>
+                                <a href="/myapp/admin_add_floor/#tab" class="dropdown-item">ADD FLOOR</a>
 {#                                <a href="destination.html" class="dropdown-item">Destination</a>#}
 {#                                <a href="guide.html" class="dropdown-item">Travel Guides</a>#}
 {#                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>#}
                             </div>
                         </div>
-{#                        <a href="/myapp/send_notifi/" class="nav-item nav-link">NOTIFICATION</a>#}
+                        <a href="/myapp/send_notifi/#tab" class="nav-item nav-link">NOTIFICATION</a>
 {#                        <a href="/myapp/admin_view_feedback/" class="nav-item nav-link">FEEDBACK</a>#}
 {#                        <a href="/myapp/admin_view_complaint/" class="nav-item nav-link">COMPLAINTS</a>#}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SHOPS</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="/myapp/admin_view_shops" class="dropdown-item">View shops</a>
-                                <a href="/myapp/admin_add_shop" class="dropdown-item">Add shops</a>
-{#                                <a href="destination.html" class="dropdown-item">Destination</a>#}
-{#                                <a href="guide.html" class="dropdown-item">Travel Guides</a>#}
-{#                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>#}
+                                <a href="/myapp/admin_view_shops/#tab" class="dropdown-item">VIEW SHOPS</a>
+                                <a href="/myapp/admin_add_shop/#tab" class="dropdown-item">ADD SHOPS</a>
+
                             </div>
                         </div>
                         <a href="/myapp/mainpage/" class="nav-item nav-link">LOGOUT</a>
@@ -153,11 +154,20 @@
     <div class="container-fluid p-0">
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-{#                {% block body %}#}
-{#                {% endblock %}#}
-                    <img class="w-100" src="{% static 'asse/img/wall.jpg' %}" width="1000" height="500" alt="Image">
 
+                <div class="carousel-item active">
+
+                    <img class="w-100" src="{% static 'asse/img/wall.jpg' %}" width="1000" height="1000" alt="Image">
+
+
+                    {# THIS LINE IS FOR AUTO SCROLL#}
+
+                    <div  id="tab"></div>
+
+
+{#  <a href="/myapp/admin_view_shops/#tab" class="dropdown-item">VIEW SHOPS</a>,   ...#TAB ...IS FOR AUTO SCROLL#}
+
+{#                AUTO SCROLL  ENDED#}
                   {% block body %}
                 {% endblock %}
                 </div>

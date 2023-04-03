@@ -22,13 +22,30 @@
                         <img src="{{ data.logo }}" height="50px" width="50px" >
 
                         <h5 class="mb-2">{{ data.shopname }}</h5>
+
                        <p class="m-0">{{ data.FLOOR.floorno }}</p>
-{#                       <p class="m-0">{{ i.shopnumber }}</p>#}
+
+                       <p class="m-0">Shopnumber :{{ data.shopnumber }}</p>
                        <p class="m-0">{{ data.email }}</p>
                        <p class="m-0">{{ data.phonenumber }}</p>
                        <p class="m-0">{{ data.Category }}</p>
 
-      <td><a href="">VIEW ROUTE</a></td>
+                                               <p class="m-0">Hotspot  Address:{{ data2.hotspotaddress}}</p>
+
+{#     <h5 class="mb-2">{{ i.shopname }}</h5>#}
+{#                      <h5><p class="m-0">{{ i.FLOOR.floorno }}</p>#}
+{#                       <p class="m-0">{{ i.shopnumber }}</p>#}
+{#                    <p class="m-0">{{ i.email }}</p>#}
+{#                       <p class="m-0">{{ i.phonenumber }}</p>#}
+{#                       <p class="m-0">{{ i.Ca/tegory }}</p>#}
+
+</h5>
+                        <tr><td><p><a href="/myapp/admin_edit_shops/{{ data.id }}#about">EDIT</a></p></td></tr>
+                        <tr><td><p><a href="{% url 'admin_delete_shop' id=data.id %}">DELETE</a></p></td></tr>
+                        <tr><td><p><a href="">VIEW ROUTE</a></p></td></tr>
+{#                        <tr><td><p><a href="/myapp/send_notifi/{{ data.id }}#about">Send Notification</a></p></td></tr>#}
+
+{#      <td><a href="">VIEW ROUTE</a></td>#}
 
                     </div>
                 </div>

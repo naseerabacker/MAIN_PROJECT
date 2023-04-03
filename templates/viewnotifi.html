@@ -1,4 +1,4 @@
-{% extends "ind.html" %}
+            {% extends "shopindex.html" %}
 {% block body %}
 
 <body>
@@ -22,8 +22,8 @@
             <table class="table table-borderless table-hover" width="200" border="0.1">
 
   <tr>
-      <td>S.no</td>
-    <td>Message</td>
+{#      <td>S.no</td>#}
+    <th>Notifications</th>
 {#    <td>ShopName</td>#}
 {#    <td>&nbsp;Floor</td>#}
 {#      <td>&nbsp;shopnumber</td>#}
@@ -37,7 +37,7 @@
           {% for i in data %}
           <tr>
 
-          <td>&nbsp;{{ forloop.counter }}</td>
+{#          <td>&nbsp;{{ forloop.counter }}</td>#}
 {#          <td>&nbsp;<img src="{{ i.logo }}" height="100px" width="100px"></td>#}
           <td>{{ i.notification }}</td>
 {#          <td>{{ i.FLOOR.floorno }}</td>#}

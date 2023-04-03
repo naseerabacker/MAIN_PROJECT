@@ -63,6 +63,8 @@ class offers(models.Model):
 
 class notification(models.Model):
     notification = models.CharField(max_length=30)
+    shop_id= models.ForeignKey(shop, on_delete=models.CASCADE,default=35)
+
     # time = models.CharField(max_length=30)
     # date = models.DateField(max_length=10)
     # status = models.CharField(max_length=10)

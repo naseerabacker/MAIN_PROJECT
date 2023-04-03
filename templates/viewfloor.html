@@ -1,96 +1,76 @@
 {% extends "indd.html" %}
 {% block body %}{% load static %}
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <style>
 /* unvisited link */
 a:link {
-  color: blue;
+color: blue;
 }
 
 /* visited link */
 a:visited {
-  color: blue;
+color: blue;
 }
 
 /* mouse over link */
 a:hover {
-  color: blue;
+color: blue;
 }
 
 /* selected link */
 a:active {
-  color: blue;
+color: blue;
 }
 </style>
 </head>
 <body>
 
 
-{#                                                                    #}
-{#                                                                    #}
-{#                                                                    <!DOCTYPE html>#}
-{#                                                                    <html>#}
-{#                                                                    <head>#}
-{#                                                                    <meta name="viewport" content="width=device-width, initial-scale=1">#}
-{#                                                                    <style>#}
-{#                                                                    .card {#}
-{#                                                                      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);#}
-{#                                                                      transition: 0.3s;#}
-{#                                                                      width: 40%;#}
-{#                                                                    }#}
-{#                                                                    #}
-{#                                                                    .card:hover {#}
-{#                                                                      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);#}
-{#                                                                    }#}
-{#                                                                    #}
-{#                                                                    .container {#}
-{#                                                                      padding: 2px 16px;#}
-{#                                                                    }#}
-{#                                                                    </style>#}
-{#                                                                    </head>#}
-{#                                                                    <body>#}
-{#                                                                    #}
-{#                                                                    <h2>FLOOR</h2>#}
-{#                                                                    {% for i in data %}#}
-{#                                                                    #}
-{#                                                                    <div class="card">#}
-{#                                                                    #}
-{#                                                                      <div class="container">#}
-{#                                                                    #}
-{#                                                                          <h4><b>{{ i.floorno }}</b></h4>#}
-{#                                                                        <p><a href="/myapp/floor_shop/{{ i.id }}">VIEW SHOPS</a></p>#}
-{#                                                                    #}
-{#                                                                    #}
-{#                                                                      </div>#}
-{#                                                                    </div>#}
-{#                                                                    {% endfor %}#}
 <br><br>
-<h2>FLOORS</h2>
+{#<h2>FLOORS</h2>#}
 
-<h2></h2><br><br>
+<br><br>
 
 {% for i in data %}
-<div class="card">
-<div class="container">
 
+<div class="card row">
+<div class="container">
+<p><br><br></p>
 <div class="container-fluid pb-5">
 <div class="container pb-5">
 <div class="row">
+<h4><b>{{ i.floorno }}</b></h4>
+<table>
+
+{% for x in data2 %}
+
 <div class="col-md-4">
 <div class="d-flex mb-4 mb-lg-0">
-{#                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">#}
-{#                            <i class="fa fa-2x fa-money-check-alt text-white"></i>#}
-</div>
 <div class="d-flex flex-column">
-<p class="m-0"></p><br><br>
-{#                                                <img class="w-100" src="{% static 'asse/img/wall.jpg' %}" style="height: 100px; width: 100px;>#}
 
-<h4><b>{{ i.floorno }}</b></h4>
 
-<b><p><a href="/myapp/floor_shop/{{ i.id }}">VIEW SHOPS</a></p></b>
+
+
+
+{% if i.id == x.FLOOR_id %}
+<th>   <a href="/myapp/view_shop_detail/{{ x.id }}#about"><img src="{{ x.logo }}" height="200px" width="200px" ></a>
+</th>
+{% endif %}
+
+
+
+</div>
+</form>
+</div>
+</div>
+
+{% endfor %}
+</table>
+</div>
+{#<b><p><a href="/myapp/floor_shop/{{ i.id }}">VIEW SHOPS</a></p></b>#}
 </div>
 </div>
 </div>
@@ -108,3 +88,7 @@ a:active {
 
 </body>
 {% endblock %}
+
+
+
+
