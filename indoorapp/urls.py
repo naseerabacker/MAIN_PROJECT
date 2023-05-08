@@ -47,7 +47,9 @@ urlpatterns = [
     # path('admin_view_complaint_post/', views.admin_view_complaint_post),
 
     path('view_floor/', views.view_floor),
-
+    path('view_query/', views.view_query),
+    path('reply_query/<id>', views.reply_query),
+    path('reply_query_post/', views.reply_query_post),
 
     path('admin_view_feedback/', views.admin_view_feedback),
     path('view_feedback/', views.view_feedback),
@@ -92,6 +94,11 @@ urlpatterns = [
     path('add_product/', views.add_product),
     path('add_product_post/', views.add_product_post),
 
+    path('add_direction/', views.add_direction),
+    path('add_direction_post/', views.add_direction_post),
+
+    path('view_direction/', views.view_direction),
+
 
     path('edit_profile/<int:did>', views.edit_profile,name='edit_profile'),
     path('edit_profile_post/', views.edit_profile_post),
@@ -101,17 +108,25 @@ urlpatterns = [
 
     path('view_notifi/', views.view_notifi, name='view_notifi'),
 
+
     # =============
 # ANDROID
 #     =============
 
-    # path('android_login_post/', views.android_login_post),
+    path('android_login_post/', views.android_login_post),
+    path('android_signup_post/', views.android_signup_post),
 
+    path('my_find/', views.my_find),
     path("cus_view_shop/", views.cus_view_shop),
     path("cus_view_shop_post/", views.cus_view_shop_post),
     path("cus_view_shop_floor/", views.cus_view_shop_floor),
     path("cus_view_floor/", views.cus_view_floor),
+    path("cus_view_direction/", views.cus_view_direction),
 
     path("shop_view/", views.shop_view),
+    path("send_feedback/", views.send_feedback),
+    path("send_query/", views.send_query),
+    path("logout/", views.logout),
+    path("view_query_reply/", views.view_query_reply),
 
 ]

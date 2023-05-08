@@ -32,7 +32,18 @@ class shop(models.Model):
     phonenumber = models.CharField(max_length=30)
     FLOOR = models.ForeignKey(floor,on_delete=models.CASCADE)
     LOGIN = models.ForeignKey(login,on_delete=models.CASCADE,default=1)
+    x_axis=models.IntegerField(max_length=30,default="none")
+    y_axis=models.IntegerField(max_length=30,default="none")
 
+
+    type = models.CharField(max_length=30, default="none")
+
+
+class direction(models.Model):
+    # id = models.CharField(max_length=30)
+    shopida=  models.ForeignKey(shop,on_delete=models.CASCADE,related_name="shopida")
+    shopidb =  models.ForeignKey(shop,on_delete=models.CASCADE,related_name="shopidb")
+    direction = models.CharField(max_length=30)
 
 
 
@@ -72,7 +83,6 @@ class notification(models.Model):
 
 class user(models.Model):
     firstname = models.CharField(max_length=30)
-    lastname = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     phonenumber = models.CharField(max_length=30)
     LOGIN =  models.ForeignKey(login,on_delete=models.CASCADE)
@@ -97,7 +107,7 @@ class emergencymessage(models.Model):
     emergencymessage = models.CharField(max_length=30)
     reply = models.CharField(max_length=30)
     time = models.CharField(max_length=30)
-    date = models.CharField(max_length=10)
+    date = models.CharField(max_length=100)
     status = models.CharField(max_length=10)
 
 

@@ -44,23 +44,16 @@ color: blue;
 <div class="row">
 <h4><b>{{ i.floorno }}</b></h4>
 <table>
-
 {% for x in data2 %}
 
 <div class="col-md-4">
 <div class="d-flex mb-4 mb-lg-0">
 <div class="d-flex flex-column">
 
-
-
-
-
 {% if i.id == x.FLOOR_id %}
-<th>   <a href="/myapp/view_shop_detail/{{ x.id }}#about"><img src="{{ x.logo }}" height="200px" width="200px" ></a>
+<th>   <a href="/myapp/view_shop_detail/{{ x.id }}#tab"><img src="{{ x.logo }}" height="200px" width="200px" ></a>
 </th>
 {% endif %}
-
-
 
 </div>
 </form>

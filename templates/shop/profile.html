@@ -1,53 +1,75 @@
-            {% extends "shopindex.html" %}
-            {% block body %}
+{% extends "shopindex.html" %}
+{% block body %}
 
-            <body>
-            {% csrf_token %}
+<body>
+{% csrf_token %}
 
 
-            <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card" >
-            <div class="card-body">
-            <h4 class="card-title" >VIEW PROFILE</h4>
-            <form class="forms-sample" id="form1" action="/myapp/shop_profile/" method="POST">
+<div class="col-lg-12 grid-margin stretch-card">
+<div class="card" >
+<div class="card-body">
+<h4 class="card-title" >VIEW PROFILE</h4>
+<form class="forms-sample" id="form1" action="/myapp/shop_profile/" method="POST">
 
-            <div class="table-responsive" >
+<div class="table-responsive" >
 
-            <table class="table table-borderless table-hover" width="200" border="0.1">
+<table class="table table-borderless table-hover" width="200" border="0.1">
 
-            <tr>
-{#                  <td>S.no</td>#}
-            <td>Logo</td>
-            <td>ShopName</td>
-            <td>Floor</td>
-            <td>Shopnumber</td>
-            <td>Email</td>
-            <td>Phonenumber</td>
-            <td>Category</td>
+<tr>
+<td>Logo</td>    <td><img src="{{ data.logo }}" height="100px" width="100px"></td>
+</tr>
+
+
+<tr>
+<td>ShopName</td><td>{{ data.shopname }}</td>
+
+</tr>
+
+
+<tr>
+<td>Floor</td><td>{{ data.FLOOR_id }}</td>
+
+</tr>
+
+<tr>
+<td>Shopnumber</td><td>{{ data.shopnumber }}</td>
+
+</tr>
+
+<tr>
+<td>Email</td><td>{{ data.email }}</td>
+
+</tr>
+
+<tr>
+<td>Phonenumber</td><td>{{ data.phonenumber }}</td>
+
+</tr>
+
+<tr>
+<td>Category</td><td>{{ data.Category }}</td>
+
+</tr>
+
+<tr>
+<td>Hotspot  Address</td><td>{{ data3.hotspotaddress }}</td>
+
+</tr>
 {#                   <td>&nbsp;</td>#}
-{#                <td>&nbsp;</td>#}
-            </tr>
-{#                      {% for i in data %}#}
+{#                <td>&nbsp;</td>#}{#                      {% for i in data %}#}
 {#            <td>{{ forloop.counter }}</td>#}
-            <td><img src="{{ data.logo }}" height="100px" width="100px"></td>
-            <td>{{ data.shopname }}</td>
-            <td>{{ data.FLOOR_id }}</td>
-            <td>{{ data.shopnumber }}</td>
-            <td>{{ data.email }}</td>
-            <td>{{ data.phonenumber }}</td>
-            <td>{{ data.Category }}</td>
-                                        <tr><td><p><a href="/myapp/edit_profile/{{ data.id }}#tab">EDIT</a></p></td></tr>
+<tr><td><p><a href="/myapp/edit_profile/{{ data.id }}#tab">EDIT</a></p></td></tr>
 
 {#                <td><p><a href="/myapp/edit_profile/{{ data.did }}#about">EDIT</a></p></td>#}
 {#                        <tr><td><p><a href="{% url 'admin_delete_shop' id=i.id %}">DELETE</a></p></td></tr>#}
-            </tr>
+</tr>
 {#                      {% endfor %}#}
 
-            </table>
-            </div>
-            </form>
-            </div>
-            </div></div>
-            </body>
-            {% endblock %}
+</table>
+</div>
+</form>
+</div>
+</div></div>
+</body>
+{% endblock %}
 {#            </HTML>#}

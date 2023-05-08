@@ -1,4 +1,4 @@
-{% extends "indd.html" %}
+{% extends "ADMIND.html" %}
 {% block body %}
 
 <body>
@@ -31,8 +31,11 @@
                        <p class="m-0">{{ data.Category }}</p>
 
                                                <p class="m-0">Hotspot  Address:{{ data2.hotspotaddress}}</p>
+                                               <p class="m-0">X_axis:{{ data.x_axis}}</p>
 
 {#     <h5 class="mb-2">{{ i.shopname }}</h5>#}
+                                                                       <p class="m-0">Y_axis:{{ data.y_axis}}</p>
+
 {#                      <h5><p class="m-0">{{ i.FLOOR.floorno }}</p>#}
 {#                       <p class="m-0">{{ i.shopnumber }}</p>#}
 {#                    <p class="m-0">{{ i.email }}</p>#}
@@ -40,9 +43,12 @@
 {#                       <p class="m-0">{{ i.Ca/tegory }}</p>#}
 
 </h5>
-                        <tr><td><p><a href="/myapp/admin_edit_shops/{{ data.id }}#about">EDIT</a></p></td></tr>
+                        <tr><td><p><a href="/myapp/admin_edit_shops/{{ data.id }}#tab">EDIT</a></p></td></tr>
                         <tr><td><p><a href="{% url 'admin_delete_shop' id=data.id %}">DELETE</a></p></td></tr>
-                        <tr><td><p><a href="">VIEW ROUTE</a></p></td></tr>
+
+
+                        {#                        <tr><td><p><a href="">VIEW ROUTE</a></p></td></tr>#}
+
 {#                        <tr><td><p><a href="/myapp/send_notifi/{{ data.id }}#about">Send Notification</a></p></td></tr>#}
 
 {#      <td><a href="">VIEW ROUTE</a></td>#}

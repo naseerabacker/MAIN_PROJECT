@@ -10,28 +10,30 @@
 <form action="/myapp/admin_add_shop_post/" method="post" enctype="multipart/form-data" name="form1" id="form1" >
     {% csrf_token %}
             <table class="table table-borderless table-hover" width="200" border="0.1">
+
+
     <tr>
-      <td><pre>Shopname</pre></td>
+       <th width="200">Shopname</th>
       <td><input type="text" name="textfield" id="textfield" required/></td>
     </tr>
     <tr>
-      <td><pre>Shopnumber</pre></td>
-      <td><input type="text" name="textfield2" id="textfield2" required /></td>
+       <th width="200">Shopnumber</th>
+      <td><input type="number" name="textfield2" id="textfield2" required /></td>
     </tr>
     <tr>
-      <td><pre>Email</pre></td>
-      <td><input type="text" name="textfield3" id="textfield3" required/></td>
+       <th width="200">Email</th>
+      <td><input type="email" name="textfield3" id="textfield3" required/></td>
     </tr>
     <tr>
-      <td><pre>Logo</pre></td>
+       <th width="200">Logo</th>
       <td><input type="file" name="fileField" id="fileField" required/></td>
     </tr>
     <tr>
-      <td><pre>Phonenumber</pre></td>
+      <th width="200">Phonenumber</th>
       <td><input type="text" name="textfield5" id="textfield5" required/></td>
     </tr>
     <tr>
-      <td><pre>Floor</pre></td>
+      <th width="200">Floor</th>
       <td><select name="textfield6"  CLASS="form-control"  id="textfield6" required>
           {% for i in data %}
           <option value="{{ i.id }}">{{ i.floorno }}</option>
@@ -39,12 +41,20 @@
       </select></td>
     </tr>
        <tr>
-      <td><pre>Category</pre></td>
+      <th width="200">Category</th>
       <td><input type="text" name="textfield7" id="textfield7" required/></td>
     </tr>
              <tr>
-      <td><pre>Hotspot Adress</pre></td>
+      <th width="200">Hotspot Adress</th>
       <td><input type="text" name="textfield8" id="textfield8" required/></td>
+    </tr>
+               <tr>
+      <th width="200">X_axis</th>
+      <td><input type="text" name="textfield9" id="textfield9" required/></td>
+    </tr>
+                <tr>
+      <th width="200">Y_axis</th>
+      <td><input type="text" name="textfield10" id="textfield10" required/></td>
     </tr>
 
     <tr>

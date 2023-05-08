@@ -1,0 +1,41 @@
+{% extends "ADMIND.html" %}
+{% block body %}
+
+<body>
+{% csrf_token %}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+<div class="card" >
+<div class="card-body">
+<h4 class="card-title" >VIEW DIRECTION </h4>
+<form class="forms-sample" id="form1" action="" method="POST">
+
+<div class="table-responsive" >
+
+<table class="table table-borderless table-hover" width="200" border="0.1">
+
+
+
+<tr>
+<td>Sl.no</td>
+<td>ShopName1</td>
+<td>ShopName2</td>
+<td>Direction</td>
+</tr>
+{% for i in data%}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{ i.shopida.shopname}}</td>
+<td>{{ i.shopidb.shopname}}</td>
+<td>{{ i.direction }}</td>
+</tr>
+{%endfor%}
+
+</table>
+</div>
+</form>
+</div>
+</div></div>
+</body>
+{% endblock %}

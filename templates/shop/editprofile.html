@@ -9,9 +9,9 @@
 <body>
 <form action="/myapp/edit_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
     {% csrf_token %}
-            <table class="table table-borderless table-hover" width="200" border="0.1">
+    <table class="table table-borderless table-hover" width="200" border="0.1">
     <tr>
-      <td><pre>Shopname</pre></td>
+       <th width="200">Shopname</th>
       <td><input type="hidden" name="h1" id="textfield" value="{{ data.id }}" />
     <input type="text" name="textfield" id="textfield" value="{{ data.shopname }}" /></td>
     </tr>
@@ -20,19 +20,19 @@
 {#      <td><input type="text" name="textfield2" id="textfield2" value="{{ data.shopnumber}}"/></td>#}
 {#    </tr>#}
     <tr>
-      <td><pre>Email</pre></td>
+       <th width="200">Email</th>
       <td><input type="text" name="textfield3" id="textfield3" value="{{ data.email}}" /></td>
     </tr>
     <tr>
-      <td><pre>Logo</pre></td>
+       <th width="200">Logo</th>
       <td><input type="file" name="fileField" id="fileField" value="{{ data.logo}}"/></td>
     </tr>
     <tr>
-      <td><pre>Phonenumber</pre></td>
+      <th width="200">Phonenumber</th>
       <td><input type="text" name="textfield5" id="textfield5" value="{{ data.phonenumber}}" /></td>
     </tr>
     <tr>
-      <td><pre>FLOOR</pre></td>
+      <th width="200">Floor</th>
       <td><select NAME="textfield6"  CLASS="form-control">
           {% for i in data2 %}
           <option value="{{ i.id }}">{{ i.floorno }}</option>
@@ -40,12 +40,12 @@
       </select></td>
     </tr>
        <tr>
-      <td><pre>Category</pre></td>
+      <th width="200">Category</th>
       <td><input type="text" name="textfield7" id="textfield7" value="{{ data.Category}}" /></td>
     </tr>
               <tr>
-      <td><pre>Hotspot Address</pre></td>
-      <td><input type="text" name="textfield8" id="textfield8" required/></td>
+      <th width="200">Hotspot Adress</th>
+      <td><input type="text" name="textfield8" id="textfield8"  value="{{ data3.hotspotaddress }}required/></td>
     </tr>
 
     <tr>

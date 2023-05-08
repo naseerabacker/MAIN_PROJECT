@@ -5,14 +5,12 @@
 {#<title>Untitled Document</title>#}
 <head><body>
 {% include "indd.html" %}
-{#{% extends "index2.html" %}#}
 {% block body %}
 <form action="/myapp/login_post/" method="post">
 {% csrf_token %}
 
 <div class="col-lg-12 grid-margin stretch-card">
         <div class="card-body">
-            <form class="forms-sample" id="form1" action="" method="post">
 
             <table class="table table-borderless table-hover" width="500" border="0.1">
 {#  <table class="table table-striped">#}
@@ -22,21 +20,21 @@
   </tr>
   <tr>
     <td>PASSWORD</td>
-    <td><input type="text" name="textfield2" id="textfield2" /></td>
+    <td><input type="password" name="textfield2" id="textfield2" /></td>
   </tr>
   <tr>
     <td colspan="2"><div align="center">
       <p>
         <input type="submit" name="button" id="button" value="login" />
       </p>
-{#      <p><a href="#">Change password</a></p>#}
+      <p><a href="/myapp/change_pass/">Change password</a></p>
     </div></td>
     </tr>
 </table>
-              </div>
-</form>
-        </div>
+
+
 </div></div>
+            </form>
 {% endblock %}
 </body>
 </html>
